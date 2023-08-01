@@ -1,0 +1,12 @@
+E:\Projects\Bigbang-Tourism\Bigbang-Tourism(API)\ModelsLibrary\bin\Debug\net7.0\ModelsLibrary.deps.json
+E:\Projects\Bigbang-Tourism\Bigbang-Tourism(API)\ModelsLibrary\bin\Debug\net7.0\ModelsLibrary.dll
+E:\Projects\Bigbang-Tourism\Bigbang-Tourism(API)\ModelsLibrary\bin\Debug\net7.0\ModelsLibrary.pdb
+E:\Projects\Bigbang-Tourism\Bigbang-Tourism(API)\ModelsLibrary\obj\Debug\net7.0\ModelsLibrary.csproj.AssemblyReference.cache
+E:\Projects\Bigbang-Tourism\Bigbang-Tourism(API)\ModelsLibrary\obj\Debug\net7.0\ModelsLibrary.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projects\Bigbang-Tourism\Bigbang-Tourism(API)\ModelsLibrary\obj\Debug\net7.0\ModelsLibrary.AssemblyInfoInputs.cache
+E:\Projects\Bigbang-Tourism\Bigbang-Tourism(API)\ModelsLibrary\obj\Debug\net7.0\ModelsLibrary.AssemblyInfo.cs
+E:\Projects\Bigbang-Tourism\Bigbang-Tourism(API)\ModelsLibrary\obj\Debug\net7.0\ModelsLibrary.csproj.CoreCompileInputs.cache
+E:\Projects\Bigbang-Tourism\Bigbang-Tourism(API)\ModelsLibrary\obj\Debug\net7.0\ModelsLibrary.dll
+E:\Projects\Bigbang-Tourism\Bigbang-Tourism(API)\ModelsLibrary\obj\Debug\net7.0\refint\ModelsLibrary.dll
+E:\Projects\Bigbang-Tourism\Bigbang-Tourism(API)\ModelsLibrary\obj\Debug\net7.0\ModelsLibrary.pdb
+E:\Projects\Bigbang-Tourism\Bigbang-Tourism(API)\ModelsLibrary\obj\Debug\net7.0\ref\ModelsLibrary.dll
