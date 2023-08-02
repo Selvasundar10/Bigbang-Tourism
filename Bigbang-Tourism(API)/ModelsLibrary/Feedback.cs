@@ -6,7 +6,7 @@ namespace Bigbang_Tourism.Models
     public class Feedback
     {
         [Key]
-        public int FeedbackID { get; set; }
+        public int Feedback_Id { get; set; }
 
         [Required]
         [ForeignKey("User")]

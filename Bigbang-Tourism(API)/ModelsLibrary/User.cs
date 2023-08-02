@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Bigbang_Tourism.Models
 {
@@ -31,9 +32,12 @@ namespace Bigbang_Tourism.Models
         [Required]
         public UserRole Role { get; set; }
 
+        [ForeignKey("Gallery")]
+        public int Image_Id { get; set; }
+         public Gallery? Gallery { get; set; }
+
         public ICollection<Travel_Agent>? TravelAgents { get; set; }
-        public ICollection<Tour>? Tours { get; set; }
-        public ICollection<Booking_Details>? BookingDetails { get; set; }
+   
         public ICollection<Feedback>? Feedbacks { get; set; }
     }
 }

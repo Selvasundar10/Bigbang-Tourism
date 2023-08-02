@@ -7,6 +7,16 @@ namespace UserAPI.DB
     {
         public UserContext(DbContextOptions<UserContext> options) : base(options) { }
 
-        public DbSet<TourSpot> Users { get; set; }
+        public DbSet<User> User { get; set; }
+
+        public DbSet<Travel_Agent> Travel_Agent { get; set; }
+
+        public DbSet<Feedback> Feedbacks { get; set; }
+
+        public DbSet<Gallery> Gallery { get; set; }
+
+
+
+
     }
 }

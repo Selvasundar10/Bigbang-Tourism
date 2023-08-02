@@ -10,3 +10,5 @@ E:\Projects\Bigbang-Tourism\Bigbang-Tourism(API)\ModelsLibrary\obj\Debug\net7.0\
 E:\Projects\Bigbang-Tourism\Bigbang-Tourism(API)\ModelsLibrary\obj\Debug\net7.0\refint\ModelsLibrary.dll
 E:\Projects\Bigbang-Tourism\Bigbang-Tourism(API)\ModelsLibrary\obj\Debug\net7.0\ModelsLibrary.pdb
 E:\Projects\Bigbang-Tourism\Bigbang-Tourism(API)\ModelsLibrary\obj\Debug\net7.0\ref\ModelsLibrary.dll
+E:\Projects\Bigbang-Tourism\Bigbang-Tourism(API)\ModelsLibrary\bin\Debug\net7.0\ModelsLibrary.runtimeconfig.json
+E:\Projects\Bigbang-Tourism\Bigbang-Tourism(API)\ModelsLibrary\obj\Debug\net7.0\ModelsLibrary.genruntimeconfig.cache

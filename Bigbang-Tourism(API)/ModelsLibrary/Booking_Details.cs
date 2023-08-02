@@ -29,6 +29,12 @@ namespace Bigbang_Tourism.Models
         public string? BillingDetails { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
+    
+
+        public int no_of_persons { get; set; }
+
+        [Required]
         public decimal? BillingPrice { get; set; }
         public User? User { get; set; }
         public Tour? Tour { get; set; }
