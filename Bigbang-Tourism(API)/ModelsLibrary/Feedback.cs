@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Bigbang_Tourism.Models
 {
-    public class Feedback
+    public class Feedbacks
     {
         [Key]
         public int Feedback_Id { get; set; }

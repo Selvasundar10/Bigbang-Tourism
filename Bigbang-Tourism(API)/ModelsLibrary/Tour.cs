@@ -10,21 +10,16 @@ namespace Bigbang_Tourism.Models
         [Key]
         public int Tour_Id { get; set; }
 
-     
-
         [ForeignKey("Travel_Agent")]
     public int Agent_Id { get; set; }
 
         public Travel_Agent? Travel_Agent { get; set; }
 
 
-
         [Required]
         [StringLength(20)]
         public string? Tour_Name { get; set; }
-
-
-     
+   
 
         [Required]
         public string? Itinerary { get; set; }

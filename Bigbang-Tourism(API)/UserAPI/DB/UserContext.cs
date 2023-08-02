@@ -11,7 +11,7 @@ namespace UserAPI.DB
 
         public DbSet<Travel_Agent> Travel_Agent { get; set; }
 
-        public DbSet<Feedback> Feedbacks { get; set; }
+        public DbSet<Feedbacks> Feedbacks { get; set; }
 
         public DbSet<Gallery> Gallery { get; set; }
 

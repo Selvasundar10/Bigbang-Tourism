@@ -8,7 +8,7 @@ namespace Tour_API.DB
         public TourContext(DbContextOptions<TourContext> options) : base(options) { }
 
 
-        public DbSet<Tour> Tour { get; set; }
+        public DbSet<Tour> Feedbacks { get; set; }
 
 
         public DbSet<Hotel> Hotel { get; set; }
@@ -30,6 +30,8 @@ namespace Tour_API.DB
              .Property(b => b.Cost)
              .HasColumnType("decimal(18, 2)");
         }
+
+        public DbSet<Bigbang_Tourism.Models.Feedbacks> Feedback { get; set; } = default!;
 
 
     }

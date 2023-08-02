@@ -38,6 +38,6 @@ namespace Bigbang_Tourism.Models
 
         public ICollection<Travel_Agent>? TravelAgents { get; set; }
    
-        public ICollection<Feedback>? Feedbacks { get; set; }
+        public ICollection<Feedbacks>? Feedbacks { get; set; }
     }
 }
