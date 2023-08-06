@@ -1,5 +1,5 @@
-﻿using Bigbang_Tourism.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using ModelsLibrary;
 
 namespace Tour_API.Repository.Interface
 {
@@ -9,9 +9,13 @@ namespace Tour_API.Repository.Interface
         public Task<Tour> GetTourDetails(int id);
 
         public Task<Tour> PostTour(Tour tour);
-        public Task<Tour> PutTour(int id, Tour tour);
+        public Task<Tour> PutTour(string name, Tour tour);
 
-        public Task<string> DeleteTour(int id);
+        public Task<string> DeleteTour(string name);
+        public Task<List<Tour>> FilterByTourLocation(string location);
+        public Task<List<Tour>> FilterByTourPrice(decimal minprice, decimal maxprice);
+        public Task<List<Tour>> FilterByDays(string days);
+
 
     }
 }

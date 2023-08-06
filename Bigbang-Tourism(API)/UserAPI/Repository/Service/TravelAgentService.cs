@@ -1,8 +1,8 @@
-﻿using Bigbang_Tourism.DTOs;
-using Bigbang_Tourism.Interfaces;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UserAPI.DTO;
+using UserAPI.Repository.Interface;
 
-namespace Bigbang_Tourism.Services
+namespace UserAPI.Repository.Service
 {
     public class TravelAgentService : ITravelAgentService
     {

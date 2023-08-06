@@ -2,42 +2,37 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Bigbang_Tourism.Models
+namespace ModelsLibrary
 {
     public class User
     {
-        public enum UserRole
-        {
-            Administrator,
-            Travel_Agent,
-            User
-        }
+
 
         [Key]
-        public int User_Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+
+        public string? User_Id { get; set; }
 
         [Required]
         [StringLength(20)]
         public string User_Name { get; set; } = string.Empty;
 
-        [Required]
-        [DataType(DataType.Password)]
-        [MinLength(6, ErrorMessage = "Password must be at least 6 characters long.")]
-        public string Password { get; set; } = string.Empty;
+
+
 
         [Required]
-        [EmailAddress(ErrorMessage = "Invalid Email Address.")]
+        [RegularExpression(@"^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "Invalid Email Address")]
+
         public string Email { get; set; } = string.Empty;
+        public string Gender { get; set; } = string.Empty;
 
         [Required]
-        public UserRole Role { get; set; }
+        public string Role { get; set; } = string.Empty;
 
-        [ForeignKey("Gallery")]
-        public int Image_Id { get; set; }
-         public Gallery? Gallery { get; set; }
 
-        public ICollection<Travel_Agent>? TravelAgents { get; set; }
-   
-        public ICollection<Feedbacks>? Feedbacks { get; set; }
+
+
+        public byte[]? Password { get; set; }
+        public byte[]? HashKey { get; set; }
     }
 }

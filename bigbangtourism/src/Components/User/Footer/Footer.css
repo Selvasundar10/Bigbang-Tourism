@@ -1,0 +1,90 @@
+.footer {
+  background: #057d8b;
+  padding: 40px 0;
+
+  font-family: 'Poppins, sans-serif';
+
+
+}
+
+.footer h4 {
+  color: #333;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.footer p {
+  margin: 0 0 10px;
+  font-size: 14px;
+}
+
+.fa {
+  color: #333;
+  font-size: 24px;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.fa:hover {
+  color: #007bff;
+}
+
+.bottom-bar {
+  background-color: #f0f0f0;
+  padding: 10px 0;
+}
+
+.bottom-bar p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.footer-links li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.footer-links li:last-child {
+  margin-right: 0;
+}
+
+.footer-links a {
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.fa {
+  padding: 10px;
+  font-size: 30px;
+  width: 58px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
+
+.fa-facebook {
+  color: rgb(48, 117, 159);
+}
+
+.fa-twitter {
+  color: rgb(120, 216, 233);
+}
+
+
+.fa-google {
+  color: rgb(142, 59, 59);
+
+}
+
+.fa-youtube {
+  color: rgb(192, 91, 91);
+}
+
+.fa-instagram {
+  color: rgb(181, 103, 103);
+}

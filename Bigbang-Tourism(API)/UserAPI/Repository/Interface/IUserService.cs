@@ -1,13 +1,15 @@
-﻿//using Bigbang_Tourism.DTOs;
-//using Microsoft.AspNetCore.Mvc;
+﻿
+using ModelsLibrary;
 
-//namespace Bigbang_Tourism.Interfaces
-//{
-//    public interface IUserService
-//    {
-//        public ActionResult<UserDTO> Login([FromBody] UserDTO userDTO);
-//        public ActionResult<UserDTO> Register([FromBody] UserDTO userDTO);
+namespace UserAPI.Repository.Interface
+{
+    public interface IUserService
+    {
+        ICollection<User> GetAll();
+        User Get(string username);
+        User Add(User user);
+        User Update(User user);
+        User Delete(string userId);
 
-
-//    }
-//}
+    }
+}

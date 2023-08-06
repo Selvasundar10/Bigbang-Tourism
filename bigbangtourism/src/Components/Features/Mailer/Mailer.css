@@ -1,0 +1,58 @@
+  .query-mail{
+    display: flex;
+  }
+  .map_img{
+    opacity :0.8;
+    margin-left: 54px;
+  }
+  .form-container{
+    margin-left: 310px;
+  }
+
+  .form-container label{
+    padding: 16px;
+    padding-right: 26px;
+
+  }
+
+  .mail-submit-btn{
+    background-color: #057d8b;
+    width:120px; 
+    border-radius: 6px;
+    color: white;
+    margin-left: 610px;
+    height: 40px;
+    margin-top: 20px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .query-mail {
+      flex-direction: column;
+    }
+  
+    .map_img {
+      margin-left: 0;
+      margin-bottom: 20px;
+    }
+  
+    .form-container {
+      margin-left: 0;
+    }
+  
+    .mail-submit-btn {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  
+  @media screen and (max-width: 1400px) {
+    .map_img {
+      display: none;
+    }
+  } 
+
+  @media screen and (max-width: 1400px) {
+    .form-container{
+      margin-left: 80px;
+    }
+  } 

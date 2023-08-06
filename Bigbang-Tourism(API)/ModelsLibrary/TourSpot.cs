@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Bigbang_Tourism.Models
+namespace ModelsLibrary
 {
     public class TourSpot
     {
@@ -22,9 +22,6 @@ namespace Bigbang_Tourism.Models
         [Required]
         public string? ImageURL { get; set; }
 
-        [ForeignKey("Tour")]
-        public int Tour_Id { get; set; }
 
-        public Tour? Tour { get; set; }
     }
 }

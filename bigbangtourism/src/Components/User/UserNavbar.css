@@ -1,0 +1,53 @@
+* {
+  font-family: 'Poppins, sans-serif';
+}
+
+.nav-head {
+  background-color: #057d8b;
+  height: 42px;
+  width: 100% ;
+}
+.nav-insta-icon{
+  margin-left: 50px;
+}
+.nav-youtube-icon{
+  margin-left: 20px;
+}
+.nav-phone-icon{
+  margin-left: 180px;
+}
+.contact-number{
+margin-left: 1600px;
+text-decoration: none;
+color:white;
+
+}
+#phone-icon{
+  margin-left: 400px;
+}
+.user-nav-link {
+  line-height: 2;
+  font-size: 20px;
+  text-decoration: none;
+  color: #057d8b;
+  padding-right: 30px;
+
+}
+
+.profile-pic {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#profile-dropdown {
+  margin-left: 10px;
+}

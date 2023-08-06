@@ -1,0 +1,58 @@
+/* styles.css */
+.welcome-msg {
+  display: flex !important;
+  margin-left: 110px;
+}
+
+.Tajmahal-img {
+  width: 40%;
+}
+
+.Tajmahal-img img {
+  border-radius: 22px;
+}
+
+.welcome-content {
+  width: 50%;
+  margin-top: 50px;
+}
+
+.welcome-content p {
+  font-size: 19px;
+}
+
+.home-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row; /* Change to row to display cards in the same row */
+  justify-content: space-around; /* Add some space between cards */
+}
+
+.user-card {
+  max-width: 345px;
+  margin-bottom: 20px; /* Add some bottom margin between cards */
+  margin-right: 10px; /* Adjust the right margin to reduce the gap */
+  margin-left: 10px; /* Adjust the left margin to reduce the gap */
+}
+
+.user-card-media {
+  height: 140px;
+  display: flex;
+  margin-left: 120px;
+  object-fit: fill !important;
+}
+
+.user-card-media img {
+  max-width: 30%;
+}
+
+.user-card-title {
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.user-card-description {
+  font-size: 14px;
+  color: #555;
+}

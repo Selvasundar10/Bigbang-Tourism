@@ -22,98 +22,7 @@ namespace Tour_API.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Bigbang_Tourism.Models.Booking_Details", b =>
-                {
-                    b.Property<int>("Booking_Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Booking_Id"));
-
-                    b.Property<int>("Agent_Id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("BillingDetails")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal?>("BillingPrice")
-                        .IsRequired()
-                        .HasColumnType("decimal(18, 2)");
-
-                    b.Property<DateTime>("BookingDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("Hotel_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Tour_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("User_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("no_of_persons")
-                        .HasColumnType("int");
-
-                    b.HasKey("Booking_Id");
-
-                    b.HasIndex("Hotel_Id");
-
-                    b.HasIndex("Tour_Id");
-
-                    b.HasIndex("User_Id");
-
-                    b.ToTable("Booking_Details");
-                });
-
-            modelBuilder.Entity("Bigbang_Tourism.Models.Feedback", b =>
-                {
-                    b.Property<int>("Feedback_Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Feedback_Id"));
-
-                    b.Property<string>("FeedbackMessage")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Rating")
-                        .HasColumnType("int");
-
-                    b.Property<int>("User_Id")
-                        .HasColumnType("int");
-
-                    b.HasKey("Feedback_Id");
-
-                    b.HasIndex("User_Id");
-
-                    b.ToTable("Feedback");
-                });
-
-            modelBuilder.Entity("Bigbang_Tourism.Models.Gallery", b =>
-                {
-                    b.Property<int>("Image_Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Image_Id"));
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<string>("ImageURL")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Image_Id");
-
-                    b.ToTable("Gallery");
-                });
-
-            modelBuilder.Entity("Bigbang_Tourism.Models.Hotel", b =>
+            modelBuilder.Entity("ModelsLibrary.Hotel", b =>
                 {
                     b.Property<int>("Hotel_Id")
                         .ValueGeneratedOnAdd()
@@ -152,7 +61,7 @@ namespace Tour_API.Migrations
                     b.ToTable("Hotel");
                 });
 
-            modelBuilder.Entity("Bigbang_Tourism.Models.Tour", b =>
+            modelBuilder.Entity("ModelsLibrary.Tour", b =>
                 {
                     b.Property<int>("Tour_Id")
                         .ValueGeneratedOnAdd()
@@ -160,20 +69,31 @@ namespace Tour_API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Tour_Id"));
 
-                    b.Property<int>("Agent_Id")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("Cost")
                         .HasColumnType("decimal(18, 2)");
 
                     b.Property<string>("Duration")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Hotel_Id")
+                    b.Property<int?>("Hotel_Id")
                         .HasColumnType("int");
 
                     b.Property<string>("Itinerary")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Spot_Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TourDescription")
+                        .IsRequired()
+                        .HasMaxLength(400)
+                        .HasColumnType("nvarchar(400)");
+
+                    b.Property<int?>("TourSpotSpot_Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Tour_Image")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Tour_Location")
@@ -184,16 +104,24 @@ namespace Tour_API.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<string>("TravelAgencyId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Travel_AgentAgent_Id")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Tour_Id");
 
-                    b.HasIndex("Agent_Id");
-
                     b.HasIndex("Hotel_Id");
+
+                    b.HasIndex("TourSpotSpot_Id");
+
+                    b.HasIndex("Travel_AgentAgent_Id");
 
                     b.ToTable("Tour");
                 });
 
-            modelBuilder.Entity("Bigbang_Tourism.Models.TourSpot", b =>
+            modelBuilder.Entity("ModelsLibrary.TourSpot", b =>
                 {
                     b.Property<int>("Spot_Id")
                         .ValueGeneratedOnAdd()
@@ -219,168 +147,71 @@ namespace Tour_API.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<int>("Tour_Id")
-                        .HasColumnType("int");
-
                     b.HasKey("Spot_Id");
-
-                    b.HasIndex("Tour_Id");
 
                     b.ToTable("TourSpots");
                 });
 
-            modelBuilder.Entity("Bigbang_Tourism.Models.Travel_Agent", b =>
+            modelBuilder.Entity("ModelsLibrary.Travel_Agent", b =>
                 {
-                    b.Property<int>("Agent_Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("Agent_Id")
+                        .HasColumnType("nvarchar(450)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Agent_Id"));
+                    b.Property<string>("AgencyImage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Agency_Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("Agent_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Contact_Number")
                         .HasColumnType("int");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<int>("User_Id")
-                        .HasColumnType("int");
-
-                    b.HasKey("Agent_Id");
-
-                    b.HasIndex("User_Id");
-
-                    b.ToTable("Travel_Agent");
-                });
-
-            modelBuilder.Entity("Bigbang_Tourism.Models.User", b =>
-                {
-                    b.Property<int>("User_Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("User_Id"));
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Image_Id")
-                        .HasColumnType("int");
-
                     b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RequestStatus")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
-
-                    b.Property<string>("User_Name")
+                    b.Property<string>("Role")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("User_Id");
+                    b.HasKey("Agent_Id");
 
-                    b.HasIndex("Image_Id");
-
-                    b.ToTable("User");
+                    b.ToTable("Travel_Agent");
                 });
 
-            modelBuilder.Entity("Bigbang_Tourism.Models.Booking_Details", b =>
+            modelBuilder.Entity("ModelsLibrary.Tour", b =>
                 {
-                    b.HasOne("Bigbang_Tourism.Models.Hotel", "Hotel")
+                    b.HasOne("ModelsLibrary.Hotel", "Hotel")
                         .WithMany()
                         .HasForeignKey("Hotel_Id");
 
-                    b.HasOne("Bigbang_Tourism.Models.Tour", "Tour")
+                    b.HasOne("ModelsLibrary.TourSpot", "TourSpot")
                         .WithMany()
-                        .HasForeignKey("Tour_Id");
+                        .HasForeignKey("TourSpotSpot_Id");
 
-                    b.HasOne("Bigbang_Tourism.Models.User", "User")
+                    b.HasOne("ModelsLibrary.Travel_Agent", "Travel_Agent")
                         .WithMany()
-                        .HasForeignKey("User_Id");
+                        .HasForeignKey("Travel_AgentAgent_Id");
 
                     b.Navigation("Hotel");
 
-                    b.Navigation("Tour");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Bigbang_Tourism.Models.Feedback", b =>
-                {
-                    b.HasOne("Bigbang_Tourism.Models.User", "User")
-                        .WithMany("Feedbacks")
-                        .HasForeignKey("User_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Bigbang_Tourism.Models.Tour", b =>
-                {
-                    b.HasOne("Bigbang_Tourism.Models.Travel_Agent", "Travel_Agent")
-                        .WithMany()
-                        .HasForeignKey("Agent_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Bigbang_Tourism.Models.Hotel", "Hotel")
-                        .WithMany()
-                        .HasForeignKey("Hotel_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Hotel");
+                    b.Navigation("TourSpot");
 
                     b.Navigation("Travel_Agent");
-                });
-
-            modelBuilder.Entity("Bigbang_Tourism.Models.TourSpot", b =>
-                {
-                    b.HasOne("Bigbang_Tourism.Models.Tour", "Tour")
-                        .WithMany()
-                        .HasForeignKey("Tour_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Tour");
-                });
-
-            modelBuilder.Entity("Bigbang_Tourism.Models.Travel_Agent", b =>
-                {
-                    b.HasOne("Bigbang_Tourism.Models.User", "User")
-                        .WithMany("TravelAgents")
-                        .HasForeignKey("User_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Bigbang_Tourism.Models.User", b =>
-                {
-                    b.HasOne("Bigbang_Tourism.Models.Gallery", "Gallery")
-                        .WithMany()
-                        .HasForeignKey("Image_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Gallery");
-                });
-
-            modelBuilder.Entity("Bigbang_Tourism.Models.User", b =>
-                {
-                    b.Navigation("Feedbacks");
-
-                    b.Navigation("TravelAgents");
                 });
 #pragma warning restore 612, 618
         }

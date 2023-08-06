@@ -1,33 +1,6 @@
-﻿
+﻿using System.ComponentModel.DataAnnotations;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-using System.ComponentModel.DataAnnotations;
-
-namespace Bigbang_Tourism.Models
+namespace ModelsLibrary
 {
     public class Hotel
     {

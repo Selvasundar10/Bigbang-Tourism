@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Bigbang_Tourism.Models;
 using Tour_API.DB;
 using Tour_API.Repository.Service;
 using Tour_API.Repository.Interface;
+using ModelsLibrary;
+using System.Drawing;
 
 namespace Tour_API.Controllers
 {
@@ -27,18 +28,11 @@ namespace Tour_API.Controllers
         [HttpGet]
         public async Task<List<Tour>> GetTour()
         {
-        
+
             return await _context.GetTour();
         }
 
-        // GET: api/Tours/5
-        [HttpGet("{id}")]
-        public async Task<Tour> GetTourDetails(int id)
-        {
-      
 
-            return  await _context.GetTourDetails(id);
-        }
 
         // POST: api/Tours
         [HttpPost]
@@ -48,22 +42,39 @@ namespace Tour_API.Controllers
             return await _context.PostTour(tour);
         }
         // PUT: api/Tours/5
-        [HttpPut("{id}")]
-        public async Task<Tour> PutTour(int id, Tour tour)
+        [HttpPut("{name}")]
+        public async Task<Tour> PutTour(String name, Tour tour)
         {
-           
 
-            return await _context.PutTour(id, tour);
+
+            return await _context.PutTour(name, tour);
         }
 
 
         // DELETE: api/Tours/5
-        [HttpDelete("{id}")]
-        public async Task<string> DeleteTour(int id)
+        [HttpDelete("{name}")]
+        public async Task<string> DeleteTour(string name)
         {
-     
 
-            return await _context.DeleteTour(id);
+
+            return await _context.DeleteTour(name);
+        }
+
+        [HttpGet("filterByLocation/{location}")]
+            public async Task<List<Tour>> FilterByTourLocation(string location)
+        {
+            return await _context.FilterByTourLocation(location);
+        }
+        [HttpGet("FilterByPrice/{minprice}/{maxprice}")]
+        public async Task<List<Tour>> FilterByTourPrice(decimal minprice, decimal maxprice)
+        {
+            return await _context.FilterByTourPrice(minprice, maxprice);
+        }
+
+        [HttpGet("FilterByDays/{days}")]
+        public async Task<List<Tour>> FilterByDays(string days)
+        {
+            return await _context.FilterByDays(days);
         }
 
 

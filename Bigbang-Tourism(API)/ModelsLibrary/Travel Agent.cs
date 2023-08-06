@@ -1,35 +1,42 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Bigbang_Tourism.Models
+namespace ModelsLibrary
 {
-    public enum AgentStatus
-    {
-        Pending,
-        Approved,
-        Rejected
-    }
+
 
     public class Travel_Agent
     {
         [Key]
-        public int Agent_Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
 
-        [Required]
-        [ForeignKey("User")]
-        public int User_Id { get; set; }
+        public string? Agent_Id { get; set; }
+
+        public string Agent_Name { get; set; } = string.Empty;
+
 
         [Required]
         [StringLength(100)]
         public string Agency_Name { get; set; } = string.Empty;
 
+
+        [Required]
+        [RegularExpression(@"^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "Invalid Email Address")]
+        public string Email { get; set; } = string.Empty;
+
+    
         [Required]
         [RegularExpression(@"^\d{10}$", ErrorMessage = "Contact_Number must be a 10-digit number.")]
+      
         public int Contact_Number { get; set; }
-
         [Required]
-        public AgentStatus Status { get; set; } = AgentStatus.Pending;
+        [RegularExpression("^(traveler|travel_agent|admin)$", ErrorMessage = "The Role field must be 'traveler', 'travel agent', or 'admin'")]
+        public string Role { get; set; } = string.Empty;
+        public string? Password { get; set; }
 
-        public User? User { get; set; }
+        public string AgencyImage { get; set; } = string.Empty;
+
+        public string RequestStatus { get; set; } = string.Empty;
+
     }
 }

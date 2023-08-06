@@ -21,32 +21,7 @@ namespace UserAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Bigbang_Tourism.Models.Feedback", b =>
-                {
-                    b.Property<int>("Feedback_Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Feedback_Id"));
-
-                    b.Property<string>("FeedbackMessage")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Rating")
-                        .HasColumnType("int");
-
-                    b.Property<int>("User_Id")
-                        .HasColumnType("int");
-
-                    b.HasKey("Feedback_Id");
-
-                    b.HasIndex("User_Id");
-
-                    b.ToTable("Feedbacks");
-                });
-
-            modelBuilder.Entity("Bigbang_Tourism.Models.Gallery", b =>
+            modelBuilder.Entity("ModelsLibrary.Gallery", b =>
                 {
                     b.Property<int>("Image_Id")
                         .ValueGeneratedOnAdd()
@@ -54,69 +29,89 @@ namespace UserAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Image_Id"));
 
-                    b.Property<string>("Description")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
                     b.Property<string>("ImageURL")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TravelerId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("User_Id")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Image_Id");
+
+                    b.HasIndex("User_Id");
 
                     b.ToTable("Gallery");
                 });
 
-            modelBuilder.Entity("Bigbang_Tourism.Models.Travel_Agent", b =>
+            modelBuilder.Entity("ModelsLibrary.Travel_Agent", b =>
                 {
-                    b.Property<int>("Agent_Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("Agent_Id")
+                        .HasColumnType("nvarchar(450)");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Agent_Id"));
+                    b.Property<string>("AgencyImage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Agency_Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("Agent_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Contact_Number")
                         .HasColumnType("int");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<int>("User_Id")
-                        .HasColumnType("int");
-
-                    b.HasKey("Agent_Id");
-
-                    b.HasIndex("User_Id");
-
-                    b.ToTable("Travel_Agent");
-                });
-
-            modelBuilder.Entity("Bigbang_Tourism.Models.User", b =>
-                {
-                    b.Property<int>("User_Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("User_Id"));
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Image_Id")
-                        .HasColumnType("int");
-
                     b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RequestStatus")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Agent_Id");
+
+                    b.ToTable("Travel_Agent");
+                });
+
+            modelBuilder.Entity("ModelsLibrary.User", b =>
+                {
+                    b.Property<string>("User_Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("HashKey")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("Password")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("User_Name")
                         .IsRequired()
@@ -125,49 +120,16 @@ namespace UserAPI.Migrations
 
                     b.HasKey("User_Id");
 
-                    b.HasIndex("Image_Id");
-
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("Bigbang_Tourism.Models.Feedback", b =>
+            modelBuilder.Entity("ModelsLibrary.Gallery", b =>
                 {
-                    b.HasOne("Bigbang_Tourism.Models.User", "User")
-                        .WithMany("Feedbacks")
-                        .HasForeignKey("User_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Bigbang_Tourism.Models.Travel_Agent", b =>
-                {
-                    b.HasOne("Bigbang_Tourism.Models.User", "User")
-                        .WithMany("TravelAgents")
-                        .HasForeignKey("User_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Bigbang_Tourism.Models.User", b =>
-                {
-                    b.HasOne("Bigbang_Tourism.Models.Gallery", "Gallery")
+                    b.HasOne("ModelsLibrary.User", "User")
                         .WithMany()
-                        .HasForeignKey("Image_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("User_Id");
 
-                    b.Navigation("Gallery");
-                });
-
-            modelBuilder.Entity("Bigbang_Tourism.Models.User", b =>
-                {
-                    b.Navigation("Feedbacks");
-
-                    b.Navigation("TravelAgents");
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

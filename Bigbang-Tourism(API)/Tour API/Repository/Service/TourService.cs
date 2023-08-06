@@ -1,5 +1,5 @@
-﻿using Bigbang_Tourism.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using ModelsLibrary;
 using Tour_API.DB;
 using Tour_API.Repository.Interface;
 
@@ -16,25 +16,25 @@ namespace Tour_API.Repository.Service
 
         public async Task<List<Tour>> GetTour()
         {
-            return await _context.Feedbacks.ToListAsync();
+            return await _context.Tour.ToListAsync();
         }
 
         public async Task<Tour> GetTourDetails(int id)
         {
-            var doc = await _context.Feedbacks.FirstOrDefaultAsync(x => x.Tour_Id == id);
+            var doc = await _context.Tour.FirstOrDefaultAsync(x => x.Tour_Id == id);
             return doc;
         }
 
         public async Task<Tour> PostTour(Tour tour)
         {
-            _context.Feedbacks.Add(tour);
+            _context.Tour.Add(tour);
             await _context.SaveChangesAsync();
             return tour;
         }
 
-        public async Task<Tour> PutTour(int id, Tour tour)
+        public async Task<Tour> PutTour(string name, Tour tour)
         {
-            var existingTour = await _context.Feedbacks.FirstOrDefaultAsync(x => x.Tour_Id == tour.Tour_Id);
+            var existingTour = await _context.Tour.FirstOrDefaultAsync(x => x.Tour_Name == name);
             if (existingTour == null)
             {
                 return null;
@@ -50,16 +50,41 @@ namespace Tour_API.Repository.Service
             return existingTour;
         }
 
-        public async Task<string> DeleteTour(int id)
+        public async Task<string> DeleteTour(string name)
         {
-            var doc = await _context.Feedbacks.FirstOrDefaultAsync(x => x.Tour_Id == id);
+            var doc = await _context.Tour.FirstOrDefaultAsync(x => x.Tour_Name == name);
             if (doc == null)
             {
                 return null;
             }
-            _context.Feedbacks.Remove(doc);
+            _context.Tour.Remove(doc);
             await _context.SaveChangesAsync();
             return "Deleted Successfully";
+        }
+        public async Task<List<Tour>> FilterByTourLocation(string location)
+        {
+            var Tours = _context.Tour.Where(x => x.Tour_Location == location);
+
+            return await Tours.ToListAsync();
+        }
+
+
+
+        public async Task<List<Tour>> FilterByDays(string days)
+        {
+            var query = _context.Tour.AsQueryable();
+
+            // Filter the tours based on the number of days
+            query = query.Where(tour => tour.Duration == days);
+
+            return await query.ToListAsync();
+        }
+        public async Task<List<Tour>> FilterByTourPrice(decimal minprice, decimal maxprice)
+        {
+            var query = _context.Tour.AsQueryable();
+            query = query.Where(tour => tour.Cost >= minprice && tour.Cost <= maxprice);
+
+            return await query.ToListAsync();
         }
     }
 }

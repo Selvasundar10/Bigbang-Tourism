@@ -1,5 +1,5 @@
-﻿using Bigbang_Tourism.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using ModelsLibrary;
 
 namespace UserAPI.DB
 {
@@ -11,7 +11,6 @@ namespace UserAPI.DB
 
         public DbSet<Travel_Agent> Travel_Agent { get; set; }
 
-        public DbSet<Feedbacks> Feedbacks { get; set; }
 
         public DbSet<Gallery> Gallery { get; set; }
 

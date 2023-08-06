@@ -1,5 +1,5 @@
-﻿using Bigbang_Tourism.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using ModelsLibrary;
 
 namespace Tour_API.DB
 {
@@ -8,22 +8,19 @@ namespace Tour_API.DB
         public TourContext(DbContextOptions<TourContext> options) : base(options) { }
 
 
-        public DbSet<Tour> Feedbacks { get; set; }
 
+        public DbSet<Tour> Tour { get; set; }
 
         public DbSet<Hotel> Hotel { get; set; }
 
-        public DbSet<Travel_Agent> Travel_Agent { get; set; }
-
-        public DbSet<Booking_Details> Booking_Details { get; set; }
 
         public DbSet<TourSpot> TourSpots { get; set; }
 
+        public DbSet<Travel_Agent> Travel_Agent { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Booking_Details>()
-           .Property(b => b.BillingPrice)
-           .HasColumnType("decimal(18, 2)");
+           
 
             // Your other configurations...
             modelBuilder.Entity<Tour>()
@@ -31,7 +28,6 @@ namespace Tour_API.DB
              .HasColumnType("decimal(18, 2)");
         }
 
-        public DbSet<Bigbang_Tourism.Models.Feedbacks> Feedback { get; set; } = default!;
 
 
     }

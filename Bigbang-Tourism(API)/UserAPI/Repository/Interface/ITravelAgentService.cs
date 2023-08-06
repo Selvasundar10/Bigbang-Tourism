@@ -1,6 +1,6 @@
-﻿using Bigbang_Tourism.DTOs;
+﻿using UserAPI.DTO;
 
-namespace Bigbang_Tourism.Interfaces
+namespace UserAPI.Repository.Interface
 {
     public interface ITravelAgentService
     {
