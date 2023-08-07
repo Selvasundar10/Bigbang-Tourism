@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ModelsLibrary;
 
 namespace Tour_API.Repository.Interface
@@ -8,7 +9,7 @@ namespace Tour_API.Repository.Interface
         public Task<List<Tour>> GetTour();
         public Task<Tour> GetTourDetails(int id);
 
-        public Task<Tour> PostTour(Tour tour);
+        public Task<Tour> PostTour([FromForm] Tour tour, IFormFile imageFile);
         public Task<Tour> PutTour(string name, Tour tour);
 
         public Task<string> DeleteTour(string name);

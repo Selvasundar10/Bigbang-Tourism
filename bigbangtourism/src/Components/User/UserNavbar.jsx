@@ -33,7 +33,7 @@ const UserNavbar = () => {
               <Link to ='mailer' className='user-nav-link'>Home</Link>
               <Link to ='payment' className='user-nav-link'>About Us</Link>
 
-              <Link to ='.' className='user-nav-link'>Tours</Link>
+              <Link to ='packages' className='user-nav-link'>Tours</Link>
 
               <Link to ='.' className='user-nav-link'>Login</Link>
 

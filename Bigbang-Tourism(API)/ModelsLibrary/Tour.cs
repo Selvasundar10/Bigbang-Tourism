@@ -9,38 +9,30 @@ namespace ModelsLibrary
     public class Tour
     {
         [Key]
-        public int Tour_Id { get; set; }
+        public int? Tour_Id { get; set; }
 
         public string? Tour_Image { get; set; }
 
-        [Required]
-        [StringLength(20)]
-        public string? Tour_Name { get; set; }
+/*        [Required]
+*//*        [StringLength(20)]
+*/        public string? Tour_Name { get; set; }
 
         public string? Tour_Location { get; set; }
         public string? TravelAgencyId { get; set; }
 
 
-        public int Spot_Id { get; set; }
+        public int? Spot_Id { get; set; }
         public TourSpot? TourSpot { get; set; }
 
         public string? Duration { get; set; }
-        [Required]
-        [Range(0, int.MaxValue, ErrorMessage = "Cost must be a non-negative value.")]
-        public decimal Cost { get; set; }
+/*        [Required]
+*/        [Range(0, int.MaxValue, ErrorMessage = "Cost must be a non-negative value.")]
+        public decimal? Cost { get; set; }
 
-        [Required, StringLength(400)]
-        public string? TourDescription { get; set; }
-        [Required]
-        public string? Itinerary { get; set; }
+        public Itinerary? Itinerary { get; set; }
 
-      
         public Travel_Agent? Travel_Agent { get; set; }
 
-
-
-    
-      
 
 
         public Hotel? Hotel { get; set; }

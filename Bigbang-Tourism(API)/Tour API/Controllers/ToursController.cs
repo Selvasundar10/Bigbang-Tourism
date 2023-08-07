@@ -25,7 +25,7 @@ namespace Tour_API.Controllers
         }
 
         // GET: api/Tours
-        [HttpGet]
+        [HttpGet]   
         public async Task<List<Tour>> GetTour()
         {
 
@@ -36,11 +36,12 @@ namespace Tour_API.Controllers
 
         // POST: api/Tours
         [HttpPost]
-        public async Task<Tour> PostTour(Tour tour)
+        public async Task<Tour> PostTour([FromForm]Tour tour, IFormFile imageFile)
         {
 
-            return await _context.PostTour(tour);
+            return await _context.PostTour(tour, imageFile);
         }
+
         // PUT: api/Tours/5
         [HttpPut("{name}")]
         public async Task<Tour> PutTour(String name, Tour tour)

@@ -12,6 +12,15 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<BookingContext>(optionsAction: options => options.UseSqlServer(builder.Configuration.GetConnectionString(name: "Tourism")));
 builder.Services.AddScoped<IFeedback, FeedbackService>();
+builder.Services.AddCors(op =>
+{
+    op.AddPolicy("MyCorsPolicy", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
@@ -23,6 +32,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("MyCorsPolicy");
 
 app.UseAuthorization();
 

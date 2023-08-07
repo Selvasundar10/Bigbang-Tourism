@@ -6,6 +6,7 @@ using Tour_API.Repository.Service;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Environment.EnvironmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production";
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -14,6 +15,16 @@ builder.Services.AddDbContext<TourContext>(optionsAction: options => options.Use
 builder.Services.AddScoped<ITour, TourService>();
 builder.Services.AddScoped<IHotelService, HotelService>();
 builder.Services.AddScoped<ITourSpot, TourSpotService>();
+
+builder.Services.AddCors(op =>
+{
+    op.AddPolicy("MyCorsPolicy", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+});
 
 
 
@@ -26,8 +37,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
 
+app.UseHttpsRedirection();
+app.UseCors("MyCorsPolicy");
 app.UseAuthorization();
 
 app.MapControllers();

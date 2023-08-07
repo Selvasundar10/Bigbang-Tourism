@@ -22,6 +22,15 @@ builder.Services.AddDbContext<UserContext>(optionsAction: options => options.Use
 builder.Services.AddScoped<ITokenGenerate, TokenService>();
 builder.Services.AddScoped<IUserService, UserRepo>();
 builder.Services.AddScoped<IUserAction, UserService>();
+builder.Services.AddCors(op =>
+{
+    op.AddPolicy("MyCorsPolicy", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+});
 
 builder.Services.AddSwaggerGen(c => {
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -70,7 +79,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
+
 app.UseHttpsRedirection();
+app.UseCors("MyCorsPolicy");
 
 app.UseAuthorization();
 

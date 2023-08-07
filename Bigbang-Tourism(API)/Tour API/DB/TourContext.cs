@@ -17,6 +17,8 @@ namespace Tour_API.DB
         public DbSet<TourSpot> TourSpots { get; set; }
 
         public DbSet<Travel_Agent> Travel_Agent { get; set; }
+        public DbSet<Itinerary> Itinerary { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

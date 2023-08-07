@@ -1,17 +1,23 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ModelsLibrary;
 using Tour_API.DB;
 using Tour_API.Repository.Interface;
+using Microsoft.AspNetCore.Hosting;
+
 
 namespace Tour_API.Repository.Service
 {
     public class TourService : ITour
     {
         private readonly TourContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public TourService(TourContext context)
+        public TourService(TourContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
+
         }
 
         public async Task<List<Tour>> GetTour()
@@ -25,11 +31,31 @@ namespace Tour_API.Repository.Service
             return doc;
         }
 
-        public async Task<Tour> PostTour(Tour tour)
+        public async Task<Tour> PostTour([FromForm] Tour tour, IFormFile imageFile)
         {
-            _context.Tour.Add(tour);
-            await _context.SaveChangesAsync();
-            return tour;
+            if (imageFile == null || imageFile.Length == 0)
+            {
+                throw new ArgumentException("Invalid file");
+            }
+
+            var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Images/Tour");
+            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
+            var filePath = Path.Combine(uploadsFolder, fileName);
+            try
+            {
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(stream);
+                }
+                tour.Tour_Image = fileName;
+                _context.Tour.Add(tour);
+                await _context.SaveChangesAsync();
+                return tour;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error occurred while posting the room.", ex);
+            }
         }
 
         public async Task<Tour> PutTour(string name, Tour tour)

@@ -4,11 +4,11 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import './UserHome.css';
-import Mailer from '../Features/Mailer/Mailer'
-import UserNavbar from '../User/UserNavbar';
-import Footer from '../User/Footer';
-import Map from '../Features/Map/Map';
-import Chatbot from '../Features/Chatbot/Chatbot'
+import Mailer from '../../Features/Mailer/Mailer'
+import UserNavbar from '../UserNavbar';
+import Footer from '../Footer/Footer';
+import Map from '../../Features/Map/Map';
+import Chatbot from '../../Features/Chatbot/Chatbot'
 
 const imageList = [
   {
@@ -84,7 +84,9 @@ export default function ImgMediaCard() {
 
       </div></div><br />
       <div>
-        <Mailer></Mailer><Chatbot/><br /><br />
+        <Mailer></Mailer>
+        {/* <Chatbot/> */}
+        <br /><br />
     </div>
       <div>
         <Map></Map>

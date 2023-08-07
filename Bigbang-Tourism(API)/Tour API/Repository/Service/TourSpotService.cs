@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using ModelsLibrary;
 using Tour_API.DB;
+using Tour_API.Migrations;
 using Tour_API.Repository.Interface;
 
 namespace Tour_API.Repository.Service
@@ -8,6 +10,8 @@ namespace Tour_API.Repository.Service
     public class TourSpotService : ITourSpot
     {
         private readonly TourContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
+
 
         public TourSpotService(TourContext context)
         {
@@ -20,13 +24,60 @@ namespace Tour_API.Repository.Service
         }
 
 
-        public async Task<TourSpot> PostTourSpot(TourSpot tourspot)
+        public async Task<TourSpot> PostTourSpot(TourSpot tourspot, IFormFile imageFile)
         {
-            _context.TourSpots.Add(tourspot);
-            await _context.SaveChangesAsync();
-            return tourspot;
-        }
+            if (imageFile == null || imageFile.Length == 0)
+            {
+                throw new ArgumentException("Invalid file");
+            }
 
+            var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Images");
+            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
+            var filePath = Path.Combine(uploadsFolder, fileName);
+            try
+            {
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(stream);
+                }
+                tourspot.ImageURL = fileName;
+                _context.TourSpots.Add(tourspot);
+                await _context.SaveChangesAsync();
+                return tourspot;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error occurred while posting the room.", ex);
+            }
+        }
+           
+        
+        public async Task<Tour> PostTour(Tour tour, IFormFile imageFile)
+        {
+            if (imageFile == null || imageFile.Length == 0)
+            {
+                throw new ArgumentException("Invalid file");
+            }
+
+            var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Images");
+            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
+            var filePath = Path.Combine(uploadsFolder, fileName);
+            try
+            {
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(stream);
+                }
+                tour.Tour_Image = fileName;
+                _context.Tour.Add(tour);
+                await _context.SaveChangesAsync();
+                return tour;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error occurred while posting the room.", ex);
+            }
+        }
         public async Task<TourSpot> PutTourSpot(string name, TourSpot tourspot)
         {
             var Tourspot = await _context.TourSpots.FirstOrDefaultAsync(x => x.SpotName == name);

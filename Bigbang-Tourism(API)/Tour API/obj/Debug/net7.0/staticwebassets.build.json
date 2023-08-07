@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "2tZiWYxbELJwZN3psdjZ6jgGBKT1gOCX40FMc3xu05A=",
+  "Hash": "0RfDXLT3ve9Uf+OS6SmklyuZo8rYrc+8XehQSy086sE=",
   "Source": "Tour API",
   "BasePath": "_content/Tour API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Tour API\\wwwroot",
+      "Source": "Tour API",
+      "ContentRoot": "E:\\Projects\\Bigbang-Tourism\\Bigbang-Tourism(API)\\Tour API\\wwwroot\\",
+      "BasePath": "_content/Tour API",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

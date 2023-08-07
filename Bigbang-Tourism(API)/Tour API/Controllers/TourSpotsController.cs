@@ -34,10 +34,10 @@ namespace Tour_API.Controllers
 
         // POST: api/TourSpot
         [HttpPost]
-        public async Task<TourSpot> PostTourSpot(TourSpot tourspot)
+        public async Task<TourSpot> PostTourSpot([FromForm]  TourSpot tourspot,Tour tour, IFormFile imageFile)
         {
 
-            return await _context.PostTourSpot(tourspot);
+            return await _context.PostTourSpot(tourspot, imageFile);
         }
         // PUT: api/TourSpot/5
         [HttpPut("{name}")]

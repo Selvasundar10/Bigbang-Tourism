@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "V2Is/uduBCtmyOSm1i9B7RnSzQzMMYMXrk2qhvJBUT8=",
+  "Hash": "kCWahK874JliW2ovmEFK7dgDHJXCNagHCFlnIeLmgjo=",
   "Source": "BookingAPI",
   "BasePath": "_content/BookingAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "BookingAPI\\wwwroot",
+      "Source": "BookingAPI",
+      "ContentRoot": "E:\\Projects\\Bigbang-Tourism\\Bigbang-Tourism(API)\\BookingAPI\\wwwroot\\",
+      "BasePath": "_content/BookingAPI",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

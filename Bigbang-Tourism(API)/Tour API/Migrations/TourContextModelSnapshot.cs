@@ -61,6 +61,25 @@ namespace Tour_API.Migrations
                     b.ToTable("Hotel");
                 });
 
+            modelBuilder.Entity("ModelsLibrary.Itinerary", b =>
+                {
+                    b.Property<int>("Itinerary_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Itinerary_Id"));
+
+                    b.Property<int>("Activities")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Days")
+                        .HasColumnType("int");
+
+                    b.HasKey("Itinerary_Id");
+
+                    b.ToTable("Itinerary");
+                });
+
             modelBuilder.Entity("ModelsLibrary.Tour", b =>
                 {
                     b.Property<int>("Tour_Id")
@@ -78,17 +97,11 @@ namespace Tour_API.Migrations
                     b.Property<int?>("Hotel_Id")
                         .HasColumnType("int");
 
-                    b.Property<string>("Itinerary")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("Itinerary_Id")
+                        .HasColumnType("int");
 
                     b.Property<int>("Spot_Id")
                         .HasColumnType("int");
-
-                    b.Property<string>("TourDescription")
-                        .IsRequired()
-                        .HasMaxLength(400)
-                        .HasColumnType("nvarchar(400)");
 
                     b.Property<int?>("TourSpotSpot_Id")
                         .HasColumnType("int");
@@ -113,6 +126,8 @@ namespace Tour_API.Migrations
                     b.HasKey("Tour_Id");
 
                     b.HasIndex("Hotel_Id");
+
+                    b.HasIndex("Itinerary_Id");
 
                     b.HasIndex("TourSpotSpot_Id");
 
@@ -199,6 +214,10 @@ namespace Tour_API.Migrations
                         .WithMany()
                         .HasForeignKey("Hotel_Id");
 
+                    b.HasOne("ModelsLibrary.Itinerary", "Itinerary")
+                        .WithMany()
+                        .HasForeignKey("Itinerary_Id");
+
                     b.HasOne("ModelsLibrary.TourSpot", "TourSpot")
                         .WithMany()
                         .HasForeignKey("TourSpotSpot_Id");
@@ -208,6 +227,8 @@ namespace Tour_API.Migrations
                         .HasForeignKey("Travel_AgentAgent_Id");
 
                     b.Navigation("Hotel");
+
+                    b.Navigation("Itinerary");
 
                     b.Navigation("TourSpot");
 
