@@ -14,7 +14,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<TourContext>(optionsAction: options => options.UseSqlServer(builder.Configuration.GetConnectionString(name: "Tourism")));
 builder.Services.AddScoped<ITour, TourService>();
 builder.Services.AddScoped<IHotelService, HotelService>();
-builder.Services.AddScoped<ITourSpot, TourSpotService>();
+builder.Services.AddScoped<IItinerary, ItineraryService>();
+builder.Services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
 
 builder.Services.AddCors(op =>
 {
@@ -37,11 +39,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
 app.UseHttpsRedirection();
 app.UseCors("MyCorsPolicy");
 app.UseAuthorization();
-
+app.UseStaticFiles();
 app.MapControllers();
 
 app.Run();

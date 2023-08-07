@@ -7,7 +7,7 @@ namespace ModelsLibrary
     public class Gallery
     {
         [Key]
-        public int Image_Id { get; set; }
+        public int? Image_Id { get; set; }
 
         public string? TravelerId { get; set; }
 

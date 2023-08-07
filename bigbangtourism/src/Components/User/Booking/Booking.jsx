@@ -23,9 +23,7 @@ function sendEmail(e) {
 const Mailer = () => {
   return (
     <div className='query-mail'>
-      <div className='map_img'>
-        <img src='https://img.freepik.com/premium-vector/world-map-silhouette-digital-simple-grey-map-flat-style-vector-realistic-illustration-earth-isolated-white-background_176516-1332.jpg?size=626&ext=jpg&ga=GA1.2.1633141905.1688143026&semt=ais' alt='map-img'></img>
-      </div>
+   
       <div className="form-container">
         <h4 className='emailform-head'></h4>
         <form onSubmit={sendEmail}>

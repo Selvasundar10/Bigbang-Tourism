@@ -4,7 +4,7 @@ using ModelsLibrary;
 using Tour_API.DB;
 using Tour_API.Repository.Interface;
 using Microsoft.AspNetCore.Hosting;
-
+using Tour_API.DTO;
 
 namespace Tour_API.Repository.Service
 {
@@ -22,7 +22,8 @@ namespace Tour_API.Repository.Service
 
         public async Task<List<Tour>> GetTour()
         {
-            return await _context.Tour.ToListAsync();
+            return await _context.Tour.Include(x=>x.itineraries).ToListAsync();
+
         }
 
         public async Task<Tour> GetTourDetails(int id)
@@ -60,7 +61,7 @@ namespace Tour_API.Repository.Service
 
         public async Task<Tour> PutTour(string name, Tour tour)
         {
-            var existingTour = await _context.Tour.FirstOrDefaultAsync(x => x.Tour_Name == name);
+            var existingTour = await _context.Tour.FirstOrDefaultAsync(x => x.Tour_Name== name);
             if (existingTour == null)
             {
                 return null;
@@ -68,7 +69,6 @@ namespace Tour_API.Repository.Service
 
             existingTour.Tour_Name = tour.Tour_Name;
             existingTour.Duration = tour.Duration;
-            existingTour.Itinerary = tour.Itinerary;
             existingTour.Tour_Location = tour.Tour_Location;
 
             _context.Entry(existingTour).State = EntityState.Modified;
@@ -112,5 +112,18 @@ namespace Tour_API.Repository.Service
 
             return await query.ToListAsync();
         }
+        public async Task<TourDTO> RegisterTour(TourDTO tourDTO)
+        {
+            await _context.Tour.AddAsync(new Tour
+            {
+                Tour_Name = tourDTO.Tour_Name,
+                Duration = tourDTO.Duration,
+                Cost = tourDTO.Cost,
+                Tour_Location = tourDTO.Tour_Location
+            });
+            await _context.SaveChangesAsync();
+            return tourDTO;
+        }
+      
     }
 }

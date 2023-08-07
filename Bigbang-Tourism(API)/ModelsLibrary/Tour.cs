@@ -21,20 +21,19 @@ namespace ModelsLibrary
         public string? TravelAgencyId { get; set; }
 
 
-        public int? Spot_Id { get; set; }
-        public TourSpot? TourSpot { get; set; }
-
         public string? Duration { get; set; }
 /*        [Required]
 */        [Range(0, int.MaxValue, ErrorMessage = "Cost must be a non-negative value.")]
         public decimal? Cost { get; set; }
 
-        public Itinerary? Itinerary { get; set; }
+        public ICollection<Itinerary>? itineraries { get; set; }
+        public ICollection<Hotel>? hotel { get; set; }
+
 
         public Travel_Agent? Travel_Agent { get; set; }
 
 
 
-        public Hotel? Hotel { get; set; }
+
     }
 }

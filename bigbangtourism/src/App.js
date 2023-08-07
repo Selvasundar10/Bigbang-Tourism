@@ -14,6 +14,10 @@ import Packages from './Components/User/Packages/Packages';
 import AdminHome from './Components/Admin/AdminHome/AdminHome';
 import Booking from './Components/User/Booking/Booking';
 import OTP from './Components/Features/OTP/OTP';
+import Itinerary from './Components/User/Itinerary/Itinerary';
+import AgentHome from './Components/Agent/AgentHome/AgentHome'
+import AgentPackage from './Components/Agent/AgentPackage/AgentPackage'
+
 
 const App = () => {
   return (
@@ -34,6 +38,9 @@ const App = () => {
           <Route path="/booking" element={<Booking />} />
           <Route path="/otp" element={<OTP />} />
 
+          <Route path="/itinerary" element={<Itinerary />} />
+          <Route path="/agenthome" element={<AgentHome />} />
+          <Route path="/agentpackage" element={<AgentPackage />} />
 
         </Routes>
       </BrowserRouter>

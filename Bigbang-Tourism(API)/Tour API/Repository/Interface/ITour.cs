@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ModelsLibrary;
+using Tour_API.DTO;
 
 namespace Tour_API.Repository.Interface
 {
@@ -16,6 +17,7 @@ namespace Tour_API.Repository.Interface
         public Task<List<Tour>> FilterByTourLocation(string location);
         public Task<List<Tour>> FilterByTourPrice(decimal minprice, decimal maxprice);
         public Task<List<Tour>> FilterByDays(string days);
+        public Task<TourDTO> RegisterTour(TourDTO tourDTO);
 
 
     }

@@ -12,8 +12,12 @@ namespace ModelsLibrary
         [Key]
         public int? Itinerary_Id { get; set; }
 
+
         public int? Days { get; set; }
 
-        public int? Activities { get; set; }
+        public string? Activities { get; set; }
+
+        public Tour? Tour { get; set; }
+
     }
 }

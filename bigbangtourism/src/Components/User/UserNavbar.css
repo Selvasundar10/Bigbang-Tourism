@@ -17,9 +17,10 @@
   margin-left: 180px;
 }
 .contact-number{
-margin-left: 1600px;
+  text-align: end;
 text-decoration: none;
 color:white;
+position: fixed;
 
 }
 #phone-icon{
@@ -51,3 +52,14 @@ color:white;
 #profile-dropdown {
   margin-left: 10px;
 }
+
+
+@media (min-width: 1300px){
+.contact-number{
+  margin-left: 1600px;
+}}
+
+@media (max-width: 900px){
+  .contact-number{
+    margin-left: 600px;
+  }}

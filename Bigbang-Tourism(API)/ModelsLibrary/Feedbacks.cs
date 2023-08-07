@@ -12,11 +12,11 @@ namespace ModelsLibrary
 
 
 
-        [Required]
-        public string? FeedbackMessage { get; set; }
+/*        [Required]
+*/        public string? FeedbackMessage { get; set; }
 
         [Range(1, 5)]
-        public int Rating { get; set; }
+        public int? Rating { get; set; }
   
         public User? User { get; set; }
     }

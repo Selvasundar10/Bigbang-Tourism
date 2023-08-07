@@ -56,7 +56,7 @@ namespace Tour_API.Controllers
 
             return await _context.DeleteHotel(name);
         }
-        [HttpGet("filterByLocation/{location}")]
+     /*   [HttpGet("filterByLocation/{location}")]
         public async Task<List<Hotel>> FilterByLocation(string location)
         {
             return await _context.FilterByLocation(location);
@@ -66,7 +66,7 @@ namespace Tour_API.Controllers
         public async Task<List<Hotel>> FilterByHotelName(string hotel_name)
         {
             return await _context.FilterByHotelName(hotel_name);
-        }
+        }*/
     
     }
 }

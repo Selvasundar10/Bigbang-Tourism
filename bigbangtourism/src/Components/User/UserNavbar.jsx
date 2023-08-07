@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 
 const UserNavbar = () => {
   return (
-    <div>
+    <div className='user-nav'>
       <Container fluid className='nav-head'>
         <div>
           <InstagramIcon fontSize="large" sx={{ color: "#E1306C" }} className='nav-insta-icon'>

@@ -10,6 +10,7 @@ using Tour_API.Repository.Service;
 using Tour_API.Repository.Interface;
 using ModelsLibrary;
 using System.Drawing;
+using Tour_API.DTO;
 
 namespace Tour_API.Controllers
 {
@@ -77,7 +78,13 @@ namespace Tour_API.Controllers
         {
             return await _context.FilterByDays(days);
         }
+        [HttpPost("PostPackage")]
+        public async Task<TourDTO> RegisterTour(TourDTO tourDTO)
 
+        {
+
+            return await _context.RegisterTour(tourDTO);
+        }
 
     }
 }

@@ -1,6 +1,46 @@
-.pacakge-card{
-      width: 300px;
+.custom-card-container {
+      position: absolute;
+      display: flex;
+      flex-wrap: wrap;
+      width: 1600px;
+      margin-left: 240px;
+      gap: 23px;
+      font-family: 'Playfair Display', serif;
+}.package-card {
+      width: 320px;
       margin-left: 20px;
-      margin-top: 300px;
+      border:1px solid white;
 
 }
+
+.package-img {
+      height: 250px;
+      width: 320px;
+      
+}
+
+.tour_location{
+font-size: 16px;
+opacity: 0.6;
+}
+
+.tour_name{
+      font-size: 15px !important;
+      
+}
+
+.tour_duration{
+    color:#057d8b;
+    font-size: 14px;  
+}
+#booking-btn{
+background-color: #057d8b;
+color: white;
+}
+  @media (max-width: 1309px) {
+      .custom-card-container {
+          width: 100%; /* Adjust width for smaller screens */
+          margin-left: 5px; /* Reset margin for smaller screens */
+          padding: 0 20px; /* Add padding for better spacing */
+      }
+  }

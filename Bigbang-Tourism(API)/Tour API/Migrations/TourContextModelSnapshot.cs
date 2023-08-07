@@ -24,87 +24,81 @@ namespace Tour_API.Migrations
 
             modelBuilder.Entity("ModelsLibrary.Hotel", b =>
                 {
-                    b.Property<int>("Hotel_Id")
+                    b.Property<int?>("Hotel_id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Hotel_Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Hotel_id"));
 
-                    b.Property<string>("Contact_Details")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                    b.Property<string>("Contact_details")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<string>("Hotel_Name")
-                        .IsRequired()
+                    b.Property<string>("Hotel_name")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("ImageURL")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Location")
-                        .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<double>("Rating")
+                    b.Property<double?>("Rating")
                         .HasColumnType("float");
 
-                    b.HasKey("Hotel_Id");
+                    b.Property<int?>("Tour_Id")
+                        .HasColumnType("int");
+
+                    b.HasKey("Hotel_id");
+
+                    b.HasIndex("Tour_Id");
 
                     b.ToTable("Hotel");
                 });
 
             modelBuilder.Entity("ModelsLibrary.Itinerary", b =>
                 {
-                    b.Property<int>("Itinerary_Id")
+                    b.Property<int?>("Itinerary_Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Itinerary_Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Itinerary_Id"));
 
-                    b.Property<int>("Activities")
+                    b.Property<string>("Activities")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Days")
                         .HasColumnType("int");
 
-                    b.Property<int>("Days")
+                    b.Property<int?>("Tour_Id")
                         .HasColumnType("int");
 
                     b.HasKey("Itinerary_Id");
+
+                    b.HasIndex("Tour_Id");
 
                     b.ToTable("Itinerary");
                 });
 
             modelBuilder.Entity("ModelsLibrary.Tour", b =>
                 {
-                    b.Property<int>("Tour_Id")
+                    b.Property<int?>("Tour_Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Tour_Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Tour_Id"));
 
-                    b.Property<decimal>("Cost")
+                    b.Property<decimal?>("Cost")
                         .HasColumnType("decimal(18, 2)");
 
                     b.Property<string>("Duration")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("Hotel_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Itinerary_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Spot_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TourSpotSpot_Id")
-                        .HasColumnType("int");
 
                     b.Property<string>("Tour_Image")
                         .HasColumnType("nvarchar(max)");
@@ -113,9 +107,7 @@ namespace Tour_API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Tour_Name")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TravelAgencyId")
                         .HasColumnType("nvarchar(max)");
@@ -125,46 +117,9 @@ namespace Tour_API.Migrations
 
                     b.HasKey("Tour_Id");
 
-                    b.HasIndex("Hotel_Id");
-
-                    b.HasIndex("Itinerary_Id");
-
-                    b.HasIndex("TourSpotSpot_Id");
-
                     b.HasIndex("Travel_AgentAgent_Id");
 
                     b.ToTable("Tour");
-                });
-
-            modelBuilder.Entity("ModelsLibrary.TourSpot", b =>
-                {
-                    b.Property<int>("Spot_Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Spot_Id"));
-
-                    b.Property<string>("ImageURL")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("Specialty")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<string>("SpotName")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.HasKey("Spot_Id");
-
-                    b.ToTable("TourSpots");
                 });
 
             modelBuilder.Entity("ModelsLibrary.Travel_Agent", b =>
@@ -173,34 +128,27 @@ namespace Tour_API.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("AgencyImage")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Agency_Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Agent_Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Contact_Number")
+                    b.Property<string>("Agent_Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Contact_Number")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RequestStatus")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Role")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Agent_Id");
@@ -208,31 +156,38 @@ namespace Tour_API.Migrations
                     b.ToTable("Travel_Agent");
                 });
 
+            modelBuilder.Entity("ModelsLibrary.Hotel", b =>
+                {
+                    b.HasOne("ModelsLibrary.Tour", "Tour")
+                        .WithMany("hotel")
+                        .HasForeignKey("Tour_Id");
+
+                    b.Navigation("Tour");
+                });
+
+            modelBuilder.Entity("ModelsLibrary.Itinerary", b =>
+                {
+                    b.HasOne("ModelsLibrary.Tour", "Tour")
+                        .WithMany("itineraries")
+                        .HasForeignKey("Tour_Id");
+
+                    b.Navigation("Tour");
+                });
+
             modelBuilder.Entity("ModelsLibrary.Tour", b =>
                 {
-                    b.HasOne("ModelsLibrary.Hotel", "Hotel")
-                        .WithMany()
-                        .HasForeignKey("Hotel_Id");
-
-                    b.HasOne("ModelsLibrary.Itinerary", "Itinerary")
-                        .WithMany()
-                        .HasForeignKey("Itinerary_Id");
-
-                    b.HasOne("ModelsLibrary.TourSpot", "TourSpot")
-                        .WithMany()
-                        .HasForeignKey("TourSpotSpot_Id");
-
                     b.HasOne("ModelsLibrary.Travel_Agent", "Travel_Agent")
                         .WithMany()
                         .HasForeignKey("Travel_AgentAgent_Id");
 
-                    b.Navigation("Hotel");
-
-                    b.Navigation("Itinerary");
-
-                    b.Navigation("TourSpot");
-
                     b.Navigation("Travel_Agent");
+                });
+
+            modelBuilder.Entity("ModelsLibrary.Tour", b =>
+                {
+                    b.Navigation("hotel");
+
+                    b.Navigation("itineraries");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ModelsLibrary;
 using Tour_API.DB;
@@ -11,24 +12,24 @@ namespace Tour_API.Repository.Service
 
         private readonly TourContext _context;
 
-        public HotelService(TourContext context)
+
+        public HotelService(TourContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
         }
 
         public async Task<List<Hotel>> GetHotel()
         {
-            return await _context.Hotel.ToListAsync();
+            return await _context.Hotel.Include(x => x.Tour).ToListAsync();
         }
 
-        public async Task<Hotel> GetHotelById(int id)
-        {
-            var doc = await _context.Hotel.FirstOrDefaultAsync(x => x.Hotel_Id == id);
-            return doc;
-        }
+    
 
         public async Task<Hotel> PostHotel(Hotel hotel)
         {
+          
+            var tour = await _context.Tour.FirstOrDefaultAsync(x => x.Tour_Id == hotel.Tour.Tour_Id);
+            hotel.Tour = tour;
             _context.Hotel.Add(hotel);
             await _context.SaveChangesAsync();
             return hotel;
@@ -36,15 +37,15 @@ namespace Tour_API.Repository.Service
 
         public async Task<Hotel> PutHotel(string name, Hotel hotel)
         {
-            var _hotel = await _context.Hotel.FirstOrDefaultAsync(x => x.Hotel_Name == name);
+            var _hotel = await _context.Hotel.FirstOrDefaultAsync(x => x.Hotel_name == name);
             if (_hotel == null)
             {
                 return null;
             }
 
-            _hotel.Hotel_Name = hotel.Hotel_Name;
+            _hotel.Hotel_name = hotel.Hotel_name;
             _hotel.Location = hotel.Location;
-            _hotel.Contact_Details = hotel.Contact_Details;
+            _hotel.Contact_details = hotel.Contact_details;
             _hotel.Rating = hotel.Rating;
 
             _hotel.ImageURL = hotel.ImageURL;
@@ -59,7 +60,7 @@ namespace Tour_API.Repository.Service
 
         public async Task<string> DeleteHotel(string name)
         {
-            var doc = await _context.Hotel.FirstOrDefaultAsync(x => x.Hotel_Name == name);
+            var doc = await _context.Hotel.FirstOrDefaultAsync(x => x.Hotel_name == name);
             if (doc == null)
             {
                 return null;
@@ -77,7 +78,7 @@ namespace Tour_API.Repository.Service
         }
              public async Task<List<Hotel>> FilterByHotelName(string hotel_name)
         {
-            var Hotels = _context.Hotel.Where(x=> x.Hotel_Name ==hotel_name);
+            var Hotels = _context.Hotel.Where(x=> x.Hotel_name ==hotel_name);
 
             return await Hotels.ToListAsync();
 

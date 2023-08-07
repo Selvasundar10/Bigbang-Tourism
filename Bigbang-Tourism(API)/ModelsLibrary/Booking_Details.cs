@@ -7,10 +7,10 @@ namespace ModelsLibrary
     public class Booking_Details
     {
         [Key]
-        public int Booking_Id { get; set; }
+        public int? Booking_Id { get; set; }
         [Required]
         public DateTime BookingDate { get; set; }
-        public int No_of_persons { get; set; }
+        public int? No_of_persons { get; set; }
         public string? TravelerId { get; set; }
         public string? TravelAgencyId { get; set; }
 
@@ -18,8 +18,8 @@ namespace ModelsLibrary
         public decimal? BillingPrice { get; set; }
 
 
-        public string HotelName { get; set; } = string.Empty;
-        public string TransportMode { get; set; } = string.Empty;
+        public string? HotelName { get; set; } = string.Empty;
+        public string? TransportMode { get; set; } = string.Empty;
 
    
         public Travel_Agent? Travel_Agent { get; set; }
