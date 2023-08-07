@@ -1,5 +1,6 @@
 import React from 'react';
 import emailjs from 'emailjs-com';
+import Payment from '../../Features/Payment/Payment';
 
 const serviceId = 'service_2n03h5r';
 const templateId = 'template_c6mehzb';
@@ -20,7 +21,7 @@ function sendEmail(e) {
     });
 }
 
-const Mailer = () => {
+const Booking = () => {
   return (
     <div className='query-mail'>
    
@@ -36,6 +37,9 @@ const Mailer = () => {
             <label htmlFor="user_email">Email:</label>
             <input type="email" className="form-control" id="user_email" name="user_email" required placeholder='Email' />
           </div>
+          <div>
+            <Payment/>
+          </div>
 
 <div>
           <input type="submit" class="mail-submit-btn" value="Send" /></div>
@@ -46,4 +50,7 @@ const Mailer = () => {
   );
 };
 
-export default Mailer;
+export default Booking;
+
+
+
