@@ -6,7 +6,7 @@ namespace Tour_API.Repository.Interface
     public interface IHotelService
     {
         public Task<List<Hotel>> GetHotel();
-        public Task<Hotel> PostHotel( Hotel hotel);
+        public Task<Hotel> PostHotel([FromForm] Hotel hotel, IFormFile imageFile);
         public Task<Hotel> PutHotel(string name, Hotel hotel);
         public Task<string> DeleteHotel(string name);
         public Task<List<Hotel>> FilterByLocation(string location);

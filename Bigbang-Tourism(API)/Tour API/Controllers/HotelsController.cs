@@ -34,10 +34,10 @@ namespace Tour_API.Controllers
 
         // POST: api/Tours
         [HttpPost]
-        public async Task<Hotel> PostHotel(Hotel hotel)
+        public async Task<Hotel> PostHotel([FromForm] Hotel hotel, IFormFile imageFile)
         {
 
-            return await _context.PostHotel(hotel);
+            return await _context.PostHotel(hotel, imageFile);
         }
         // PUT: api/Tours/5
         [HttpPut("{name}")]

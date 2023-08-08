@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
+import { Link } from 'react-router-dom';
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -190,7 +190,7 @@ export default function RegisterSide() {
                 </Button>
                 <Grid container>
                   <Grid item>
-                    <Link href="#" variant="body2">
+                    <Link to='login' variant="body2">
                       {"Already have an account? Login"}
                     </Link>
                   </Grid>

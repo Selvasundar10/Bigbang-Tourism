@@ -10,12 +10,16 @@ namespace Tour_API.Repository.Service
     public class HotelService : IHotelService
     {
 
+        private readonly IWebHostEnvironment _webHostEnvironment;
+
         private readonly TourContext _context;
 
 
         public HotelService(TourContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
+
         }
 
         public async Task<List<Hotel>> GetHotel()
@@ -25,14 +29,32 @@ namespace Tour_API.Repository.Service
 
     
 
-        public async Task<Hotel> PostHotel(Hotel hotel)
+        public async Task<Hotel> PostHotel([FromForm] Hotel hotel, IFormFile imageFile)
         {
-          
-            var tour = await _context.Tour.FirstOrDefaultAsync(x => x.Tour_Id == hotel.Tour.Tour_Id);
-            hotel.Tour = tour;
-            _context.Hotel.Add(hotel);
-            await _context.SaveChangesAsync();
-            return hotel;
+            if (imageFile == null || imageFile.Length == 0)
+            {
+                throw new ArgumentException("Invalid file");
+            }
+            var uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Images/Tour");
+            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
+            var filePath = Path.Combine(uploadsFolder, fileName);
+            try
+            {
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(stream);
+                }
+
+                var tour = await _context.Tour.FirstOrDefaultAsync(x => x.Tour_Id == hotel.Tour.Tour_Id);
+                hotel.Tour = tour;
+                _context.Hotel.Add(hotel);
+                await _context.SaveChangesAsync();
+                return hotel;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error occurred while posting the Hotel.", ex);
+            }
         }
 
         public async Task<Hotel> PutHotel(string name, Hotel hotel)
