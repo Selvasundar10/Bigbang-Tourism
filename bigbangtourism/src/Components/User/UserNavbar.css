@@ -1,7 +1,11 @@
 * {
   font-family: 'Poppins, sans-serif';
 }
-
+.nav-brand{
+  margin-left: 50px;
+  font-size: 27px !important;
+  color: #057d8b;
+}
 .nav-head {
   background-color: #057d8b;
   height: 42px;
@@ -20,8 +24,7 @@
   text-align: end;
 text-decoration: none;
 color:white;
-position: fixed;
-
+margin-left: 1500px;
 }
 #phone-icon{
   margin-left: 400px;
@@ -54,12 +57,9 @@ position: fixed;
 }
 
 
-@media (min-width: 1300px){
-.contact-number{
-  margin-left: 1600px;
-}}
 
 @media (max-width: 900px){
   .contact-number{
-    margin-left: 600px;
-  }}
+display: none;
+  }
+}

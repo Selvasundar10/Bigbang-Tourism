@@ -5,7 +5,7 @@
 }
 
 .Tajmahal-img {
-  width: 40%;
+  width: 400px;
 }
 
 .Tajmahal-img img {
@@ -13,8 +13,10 @@
 }
 
 .welcome-content {
-  width: 50%;
+  width: 40%;
   margin-top: 50px;
+    margin-left: 400px;
+
 }
 
 .welcome-content p {
@@ -56,3 +58,12 @@
   font-size: 14px;
   color: #555;
 }
+
+
+
+@media (max-width:1700){
+  .welcome-content{
+    margin-top: 300px;
+  }
+}
+

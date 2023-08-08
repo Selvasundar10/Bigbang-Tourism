@@ -5,7 +5,7 @@ import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import './UserNavbar.css';
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
+// import PhoneInTalkIcon from '@mui/icons-material/PhoneInTalk';
 import { Link } from 'react-router-dom';
 
 
@@ -20,13 +20,13 @@ const UserNavbar = () => {
           </InstagramIcon>
           <YouTubeIcon fontSize="large" sx={{ color: "#FF0000" }} className='nav-youtube-icon' />
           <Link to="https://www.youtube.com/" target="_blank" rel="noopener noreferrer"/>
-          <PhoneInTalkIcon></PhoneInTalkIcon>
+          {/* <PhoneInTalkIcon></PhoneInTalkIcon> */}
           <Link to="tel:8098230289" className='contact-number'>80983230289</Link>
         </div>
       </Container>
       <Navbar expand="lg" className='nav'>
         <Container fluid>
-          <Navbar.Brand>............</Navbar.Brand>
+          <Navbar.Brand className='nav-brand'>JourneyJive</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar-nav" />
           <Navbar.Collapse id="user-nav">
             <Nav className="ms-auto" >

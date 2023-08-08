@@ -85,8 +85,9 @@ return (
       <div>
         <Hotel/>
       </div>
+      <Chatbot/>
       </div>
-    </>
+    </> 
   );
 }
 

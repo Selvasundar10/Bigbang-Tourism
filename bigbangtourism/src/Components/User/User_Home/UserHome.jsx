@@ -49,17 +49,17 @@ export default function ImgMediaCard() {
         />
       </div>
       <div className='welcome-content'>
-        <h3> Welcome to -------</h3>
+        <h3> Welcome to JourneyJive</h3>
         <p>
-          GT Holidays Pvt. Ltd is a subsidiary of Sangam Group of Hotels, one of the biggest hotel chains in south Tamil
+        JourneyJive Pvt. Ltd is a subsidiary of Sangam Group of Hotels, one of the biggest hotel chains in south Tamil
           Nadu. The Sangam Group of Hotels founded in 1968 has for forty years provided impeccable service and outstanding
-          hospitality. It currently has 19 properties in Tamil Nadu. GT Holidays Pvt. Ltd built on this strong foundation
+          hospitality. It currently has 19 properties in Tamil Nadu. JourneyJive Pvt. Ltd built on this strong foundation
           aims to provide great customer satisfaction and an exemplary holiday experience. Planning a once in a lifetime
-          holiday or a yearly corporate retreat? No problem! GT Holidays can get you what you want and in the minimal
+          holiday or a yearly corporate retreat? No problem! JourneyJive can get you what you want and in the minimal
           time. One of the best destination management companies in South India, it has the experience and infrastructure
-          to handle any customer demand. In addition to destination management, GT Holidays also plans corporate tours,
+          to handle any customer demand. In addition to destination management, JourneyJive also plans corporate tours,
           incentive trips, college/school excursions, business travel, arranges car/railway & hotel bookings and much,
-          much more. Discover what makes GT Holidays and its offerings distinct from the rest of the pack and
+          much more. Discover what makes JourneyJive and its offerings distinct from the rest of the pack and
           indispensable to its customers.
         </p>
       </div>
@@ -85,7 +85,7 @@ export default function ImgMediaCard() {
       </div></div><br />
       <div>
         <Mailer></Mailer>
-        {/* <Chatbot/> */}
+        <Chatbot/>
         <br /><br />
     </div>
       <div>
